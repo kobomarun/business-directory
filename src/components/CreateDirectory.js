@@ -48,6 +48,7 @@ class CreateDirectory extends Component {
             } = this.state;
             
              Store.set(randNum, {
+                 id:randNum,
                 description, 
                 email, 
                 name, 

@@ -1,32 +1,54 @@
 import React  from 'react';
 import store from 'store';
+import { Link } from 'react-router-dom'
 
 
 
 class Home extends React.Component {
     state = {
-        store: {}
+        directory: []
     }
 
     componentDidMount() {
+        //store.clearAll();
         this.fetchDirectories()
     }
 
     fetchDirectories = (item) => {
-         item = []
-        store.each(directory => {
-           
+        item = []
+        store.each(directory => { 
             item.push(Object.assign({},directory))
-          
-            
         })
-            return item;
+
+        this.setState({
+            directory: item
+        })
+
+           return item;
 
        
     }
+
+    deleteDirectory(id) {
+        let item = []
+        store.each(directory => { 
+            item.push(Object.assign({},directory))
+        })
+     
+        let newDirectory = item.filter(item => {
+           if(item.id != id) {
+                store.remove(id)
+                return item
+            }
+        })
+        console.log(newDirectory)
+        this.setState({
+            directory: newDirectory
+        })
+    }
    
     render() {
-        let obj = this.fetchDirectories()
+        const { directory } = this.state
         
       
         return(
@@ -42,10 +64,11 @@ class Home extends React.Component {
                                        <th>Email</th>
                                        <th>Phone</th>
                                        <th>Website URL</th>
+                                       <th></th>
                                    </tr>
                                  </thead>
                                    <tbody>
-                                   { obj.map(row => {
+                                   { directory.map(row => {
                                        return (
                                        <tr>
                                            <td>{row.name}</td>
@@ -53,6 +76,8 @@ class Home extends React.Component {
                                            <td>{row.email}</td>
                                            <td>{row.phone}</td>
                                            <td>{row.url}</td>
+                                           <td><button onClick={() => this.deleteDirectory(row.id)} className="btn btn-danger">Delete</button></td>
+                                           {/* <td><Link ={`edit/${row.id}`}>Edit</Link> | <Link to={`delete/${row.id}`}>Delete</Link> </td> */}
                                        </tr>
                                        
                                     
