@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Cookies from 'js-cookie';
+import  { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import LoginForm from './forms/LoginForm'
 
 
@@ -9,9 +13,10 @@ class Login extends Component {
             email:'',
             password:'',
             userdetails: {
-                email: 'admin',
-                password: 123456
-            }
+                email: 'admin@email.com',
+                password: '@Password123'
+            },
+            isError: false
 
         }
 
@@ -29,8 +34,14 @@ class Login extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const { email, password, userdetails } = this.state;
-        if(userdetails.email == email && userdetails.password == password) {
+        if(email == '' || password == '') {
+            this.setState({
+                isError: true
+            })
+        }
+        else if(userdetails.email == email && userdetails.password == password) {
             alert('Login Successful')
+            Cookies.set('islogin', 'authenticated', { expires: 1 })
             this.props.history.push("/admin")
         } else {
             alert('invalid credentials')
@@ -40,10 +51,15 @@ class Login extends Component {
 
 
     render() {
-        console.log(this.state.userdetails.email)
+        const { isError } = this.state;
         return(
-            <div class="container">
-                <div class="row">
+            <div className="container">
+                <div className="row">
+                    { isError ? 
+                    <div className="alert alert-danger">
+                        {`email or password field cannot be empty`}
+                    </div> : ''
+                    }
                     <LoginForm 
                         handleSubmit={this.handleSubmit} 
                         handleChange={this.handleChange} 
@@ -52,6 +68,16 @@ class Login extends Component {
             </div>
         );
     }
+}
+
+export const Logout = () => {
+    Cookies.remove('islogin')
+    return <Redirect to='/login'  />
+}
+
+Login.propTypes = {
+    handleSubmit: PropTypes.func,
+    handleChange: PropTypes.func
 }
 
 export default Login;

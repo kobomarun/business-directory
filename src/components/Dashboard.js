@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie'
 
-import CreateDirectory from './CreateDirectory';
+
 import Nav from './Nav';
 
 class Dashboard extends Component {
+    componentDidMount() {
+        if(Cookies.get('islogin') !== 'authenticated')
+        this.props.history.push('/login')
+    }
     render() {
         return(
             <div className="container">

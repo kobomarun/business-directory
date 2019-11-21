@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Store from 'store';
+import PropTypes from 'prop-types';
+import Cookies from 'js-cookie';
 
 import BusinessDirectoryForm from './forms/BusinessDirectoryForm';
 import Nav from './Nav';
@@ -18,12 +20,17 @@ class CreateDirectory extends Component {
             technology: '',
             url: '',
             isSubmitted: false,
-            directory: Store.get('mee')
+            directory: Store.get('mee'),
+
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    
+    componentDidMount() {
+        if(Cookies.get('islogin') !== 'authenticated')
+        this.props.history.push('/login')
+    }
     
 
     handleChange(e) {
@@ -34,7 +41,7 @@ class CreateDirectory extends Component {
     }
 
     handleSubmit(e) {
-        let randNum = Math.floor(Math.random() * 20 );
+        let randNum = Math.floor(Math.random() * 200 );
         e.preventDefault();
         const { 
             description, 
@@ -56,22 +63,20 @@ class CreateDirectory extends Component {
                 software, 
                 technology, 
                 transportation, 
-                url });
+                url 
+            });
                 
                 
                 
-                this.setState({
-                    isSubmitted:true
-                })
-                // setTimeout(() => {
-                //     this.props.history.push('/add-directory')
-                // }, 2000)
+        this.setState({
+            isSubmitted:true
+        })
+        
     }
 
     render() {
         
         const { isSubmitted } = this.state;
-        // console.log(this.state.directory)
         return(
             <div className="container">
                 <div className="row">
@@ -94,6 +99,11 @@ class CreateDirectory extends Component {
             </div>
         );
     }
+}
+
+CreateDirectory.propTypes = {
+    handleSubmit: PropTypes.func,
+    handleChange: PropTypes.func
 }
 
 export default CreateDirectory;

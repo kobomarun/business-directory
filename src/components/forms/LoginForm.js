@@ -1,13 +1,14 @@
 import React from 'react';
+
 import  '../../Styles.css';
 
 
-const Header = (props) => {
+const LoginForm = (props) => {
     const {handleChange, handleSubmit } = props;
     return(
-        <div class="login-form">
+        <div className="login-form">
             <form onSubmit={handleSubmit}>
-                <h2 class="text-center">Log in</h2>       
+                <h2 className="text-center">Log in</h2>       
                 <div className="form-group">
                     <input 
                         type="text" 
@@ -37,4 +38,6 @@ const Header = (props) => {
     )
 }
 
-export default Header;
+
+
+export default LoginForm;

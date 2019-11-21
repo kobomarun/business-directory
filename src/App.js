@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
-import Login from './components/Login';
+import Login, { Logout } from './components/Login';
 import Nav from './components/Nav';
 import CreateDirectory from './components/CreateDirectory';
 
@@ -27,6 +27,7 @@ class App extends Component {
             <Route exact component={Home} path="/"/>
             <Route component={Dashboard} path="/admin" />
             <Route component={Login} path="/login" />
+            <Route component={Logout} path="/logout" />
             <Route component={CreateDirectory} path="/add-directory" />
           </Switch>
         </React.Fragment>
