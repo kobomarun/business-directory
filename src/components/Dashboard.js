@@ -23,8 +23,8 @@ class Dashboard extends Component {
                         <div className="card">
                         <h5 className="card-header">Welcome Admin</h5>
                         <div className="card-body">
-                            <h5 className="card-title">Special title treatment</h5>
-                            <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <h5 className="card-title">Business Directory Managment</h5>
+                            <p className="card-text">You can start creating Business Directory now</p>
                             <Link to="/add-directory" className="btn btn-primary">Get Started</Link>
                         </div>
                         </div>

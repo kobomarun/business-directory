@@ -71,6 +71,11 @@ class CreateDirectory extends Component {
         this.setState({
             isSubmitted:true
         })
+        alert('Business Directory Created!')
+
+        setTimeout(() => {
+            this.props.history.push('/')
+        }, 1000)
         
     }
 

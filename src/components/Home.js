@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import store from 'store';
+import { Link } from 'react-router-dom';
 import SearchForm from './forms/SearchForm';
 
 
@@ -105,7 +106,7 @@ class Home extends Component {
                                         <td>{row.phone}</td>
                                         <td>{row.url}</td>
                                         <td><button onClick={() => this.deleteDirectory(row.id)} className="btn btn-danger">Delete</button></td>
-                                        {/* <td><Link ={`edit/${row.id}`}>Edit</Link> | <Link to={`delete/${row.id}`}>Edit</Link> </td> */}
+                                        <td><Link to={`edit/${row.id}`}>Edit</Link>  </td>
                                     </tr>
                                     
                                 

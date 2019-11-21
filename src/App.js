@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import Login, { Logout } from './components/Login';
 import Nav from './components/Nav';
 import CreateDirectory from './components/CreateDirectory';
+import EditBusinessDirectory from './components/EditBusinessDirectory';
 
 class App extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends Component {
             <Route component={Login} path="/login" />
             <Route component={Logout} path="/logout" />
             <Route component={CreateDirectory} path="/add-directory" />
+            <Route component={EditBusinessDirectory} path ="/edit/:id" />
           </Switch>
         </React.Fragment>
       </BrowserRouter>

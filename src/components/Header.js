@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
+
 
 const Header = () => {
     return(
@@ -16,10 +19,16 @@ const Header = () => {
                     <span className="sr-only">(current)</span>
                     </Link>
                 </li>
+            
+                { Cookies.get('islogin') == 'authenticated' ?
                 <li className="nav-item">
-                    <Link className="nav-link" to="/login">Admin Login</Link>
-                    
-                </li>
+                <Link className="nav-link" to="/admin">Admin </Link> 
+            </li>: 
+            <li className="nav-item">
+                <Link className="nav-link" to="/admin">Admin</Link> 
+            </li>
+             
+            }
                 </ul>
             </div>
             </div>
