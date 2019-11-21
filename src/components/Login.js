@@ -34,12 +34,12 @@ class Login extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const { email, password, userdetails } = this.state;
-        if(email == '' || password == '') {
+        if(email === '' || password === '') {
             this.setState({
                 isError: true
             })
         }
-        else if(userdetails.email == email && userdetails.password == password) {
+        else if(userdetails.email === email && userdetails.password === password) {
             alert('Login Successful')
             Cookies.set('islogin', 'authenticated', { expires: 1 })
             this.props.history.push("/admin")

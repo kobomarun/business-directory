@@ -20,7 +20,7 @@ const Header = () => {
                     </Link>
                 </li>
             
-                { Cookies.get('islogin') == 'authenticated' ?
+                { Cookies.get('islogin') === 'authenticated' ?
                 <li className="nav-item">
                 <Link className="nav-link" to="/admin">Admin </Link> 
             </li>: 

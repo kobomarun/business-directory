@@ -46,7 +46,7 @@ class Home extends Component {
         })
      
         let newDirectory = item.filter(item => {
-           if(item.id != id) {
+           if(item.id !== id) {
                 store.remove(id)
                 return item
             }
@@ -65,11 +65,9 @@ class Home extends Component {
 
         directory = directory.filter((item) => {
             let allSearch = item.name.toLowerCase().match( search ) || item.description.toLowerCase().match( search );
-            if(allSearch == ' ') {
-                return <p>No Business found</p>
-            } else {
+           
             return allSearch;
-            }
+            
         });
         }
 
@@ -96,7 +94,7 @@ class Home extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                { directory !=  '' ?
+                                { directory !==  '' ?
                                 directory.map(row => {
                                     return (
                                     <tr key={row.id}>
