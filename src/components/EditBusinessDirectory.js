@@ -4,7 +4,12 @@ import BusinessDirectoryForm from './forms/BusinessDirectoryForm';
 class EditBusinessDirectory extends Component {
     render() {
         return(
-            <BusinessDirectoryForm />
+            <div className="container">
+                 <h2 className="text-center">Edit Business Directory</h2>       
+
+                 <BusinessDirectoryForm />
+
+            </div>
         );
     }
 }

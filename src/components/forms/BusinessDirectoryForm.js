@@ -7,7 +7,6 @@ const BusinessDirectoryForm = (props) => {
     return(
         <div className="business-form">
             <form onSubmit={handleSubmit}>
-                <h2 className="text-center">Create Business Directory</h2>       
                 <div className="form-group">
                     <input 
                         type="text" 

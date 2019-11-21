@@ -90,6 +90,7 @@ class CreateDirectory extends Component {
                     <Nav/>
                 </div>
                 <div className="col-md-10">
+                <h2 className="text-center">Create Business Directory</h2>       
                     { isSubmitted ? 
                     <div className="alert alert-success text-center">
                         Business DIrectory Successfully Created. Add a new one
